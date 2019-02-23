@@ -1,9 +1,4 @@
-#!/bin/bash
-#
-# https://github.com/Nyr/openvpn-install
-#
-# Copyright (c) 2013 Nyr. Released under the MIT License.
-
+#!/bin/bash#
 
 # Detect Debian users running the script with "sh" instead of bash
 if readlink /proc/$$/exe | grep -q "dash"; then
@@ -182,37 +177,43 @@ else
 		echo "This server is behind NAT. What is the public IPv4 address or hostname?"
 		read -p "Public IP address / hostname: " -e PUBLICIP
 	fi
-	echo
-	echo "Which protocol do you want for OpenVPN connections?"
-	echo "   1) UDP (recommended)"
-	echo "   2) TCP"
-	read -p "Protocol [1-2]: " -e -i 1 PROTOCOL
-	case $PROTOCOL in
-		1) 
-		PROTOCOL=udp
-		;;
-		2) 
-		PROTOCOL=tcp
-		;;
-	esac
-	echo
-	echo "What port do you want OpenVPN listening to?"
-	read -p "Port: " -e -i 1194 PORT
-	echo
-	echo "Which DNS do you want to use with the VPN?"
-	echo "   1) Current system resolvers"
-	echo "   2) 1.1.1.1"
-	echo "   3) Google"
-	echo "   4) OpenDNS"
-	echo "   5) Verisign"
-	read -p "DNS [1-5]: " -e -i 1 DNS
-	echo
-	echo "Finally, tell me your name for the client certificate."
-	echo "Please, use one word only, no special characters."
-	read -p "Client name: " -e -i client CLIENT
-	echo
-	echo "Okay, that was all I needed. We are ready to set up your OpenVPN server now."
-	read -n1 -r -p "Press any key to continue..."
+	#echo
+	#echo "Which protocol do you want for OpenVPN connections?"
+	#echo "   1) UDP (recommended)"
+	#echo "   2) TCP"
+	#read -p "Protocol [1-2]: " -e -i 1 PROTOCOL
+	#case $PROTOCOL in
+	#	1) 
+	#	PROTOCOL=udp
+	#	;;
+	#	2) 
+	#	PROTOCOL=tcp
+	#	;;
+	#esac
+	#echo	
+	#echo "What port do you want OpenVPN listening to?"
+	#read -p "Port: " -e -i 1194 PORT
+	#echo
+	#echo "Which DNS do you want to use with the VPN?"
+	#echo "   1) Current system resolvers"
+	#echo "   2) 1.1.1.1"
+	#echo "   3) Google"
+	#echo "   4) OpenDNS"
+	#echo "   5) Verisign"
+	#read -p "DNS [1-5]: " -e -i 1 DNS
+	#echo
+	#echo "Finally, tell me your name for the client certificate."
+	#echo "Please, use one word only, no special characters."
+	#read -p "Client name: " -e -i client CLIENT
+	#echo
+	#echo "Okay, that was all I needed. We are ready to set up your OpenVPN server now."
+	#read -n1 -r -p "Press any key to continue..."
+
+	PROTOCOL=udp
+	-e -i 1194 PORT
+	-e -i 1 DNS
+	-e -i client CLIENT
+
 	if [[ "$OS" = 'debian' ]]; then
 		apt-get update
 		apt-get install openvpn iptables openssl ca-certificates -y
