@@ -307,8 +307,8 @@ fast-io
 log /dev/null
 status /dev/null
 log-append /dev/null
-push "sndbuf 393216"
-push "rcvbuf 393216"
+push 'sndbuf 393216'
+push 'rcvbuf 393216'
 crl-verify crl.pem" >> /etc/openvpn/server.conf
 	# Enable net.ipv4.ip_forward for the system
 	echo 'net.ipv4.ip_forward=1' > /etc/sysctl.d/30-openvpn-forward.conf
@@ -396,8 +396,8 @@ key-direction 1
 verb 0
 mssfix 0
 fast-io
-push "sndbuf 393216"
-push "rcvbuf 393216"" > /etc/openvpn/client-common.txt
+push 'sndbuf 393216'
+push 'rcvbuf 393216'" > /etc/openvpn/client-common.txt
 	# Generates the custom client.ovpn
 	newclient "$CLIENT"
 	echo
